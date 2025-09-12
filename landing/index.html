@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyectos Informáticos – MySQL (CRUD + UDF + Triggers)</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true });</script>
+  <style>
+    body {font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+    .chip {display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .7rem;border-radius:999px;font-size:.7rem;font-weight:600}
+    .glass {backdrop-filter: blur(8px);}
+    .codecard pre {max-height: 460px; overflow:auto;}
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 text-gray-800">
+  <header class="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-fuchsia-600 to-purple-600 text-white">
+    <div class="absolute inset-0 opacity-20" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+    <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center relative z-10">
+      <div>
+        <div class="flex flex-wrap gap-2 items-center">
+          <span class="chip bg-white/20">💾 MySQL 8.0+</span>
+          <span class="chip bg-white/20">🧪 CRUD + UDF + Triggers</span>
+          <span class="chip bg-white/20">🎓 Clase universitaria</span>
+        </div>
+        <h1 class="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight">Proyectos Informáticos</h1>
+        <p class="mt-4 text-lg text-white/90">Paquete didáctico para enseñar BD con MySQL: procedimientos (CRUD), función de negocio y triggers de auditoría. Incluye datos de prueba, consultas y guía paso a paso. ✨</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#instrucciones" class="px-5 py-3 rounded-xl bg-white text-indigo-700 font-semibold shadow hover:bg-indigo-50">🚀 Cómo ejecutar</a>
+          <a href="#metodologia" class="px-5 py-3 rounded-xl bg-white/10 border border-white/30 font-semibold shadow hover:bg-white/20">🧭 Metodología</a>
+          <a href="#diagramas" class="px-5 py-3 rounded-xl bg-white/10 border border-white/30 font-semibold shadow hover:bg-white/20">🗺️ Diagrama</a>
+          <a href="#paquetes" class="px-5 py-3 rounded-xl bg-white/10 border border-white/30 font-semibold shadow hover:bg-white/20">📦 Paquetes SQL</a>
+        </div>
+      </div>
+      <div class="glass rounded-3xl p-6 shadow-xl bg-white/15 backdrop-blur">
+        <h3 class="text-xl font-bold mb-2">Contenido</h3>
+        <ul class="space-y-2 text-sm">
+          <li>✅ <b>schema.sql</b> – tablas, constraints, triggers, procedimientos, función.</li>
+          <li>✅ <b>seed.sql</b> – datos de prueba para validar FK y disparar triggers.</li>
+          <li>✅ <b>queries.sql</b> – verificaciones alineadas a requisitos.</li>
+          <li>✅ <b>README</b> – pasos rápidos para el laboratorio.</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section id="metodologia" class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-2xl font-bold">Metodología Pedagógica (El CÓMO enseñar)</h2>
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">Nombre de la Metodología</h3>
+        <p>Aprendizaje Basado en Problemas (ABP) con enfoque de <b>aprendizaje activo</b>.</p>
+      </div>
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">Principios Clave</h3>
+        <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <li>🧠 Aprender haciendo (ejecutar y depurar SQL).</li>
+          <li>🧩 Caso práctico: proyectos informáticos.</li>
+          <li>🤝 Colaboración constante.</li>
+          <li>🔁 El error es insumo para el aprendizaje.</li>
+        </ul>
+      </div>
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">Actividades Típicas</h3>
+        <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <li>🧪 Mini-casos con scripts a completar.</li>
+          <li>⌨️ Live coding: SP, UDF y triggers.</li>
+          <li>⚖️ Debates: FK, CHECK, índices.</li>
+          <li>🧩 Diseño E-R → MySQL.</li>
+        </ul>
+      </div>
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <h3 class="text-xl font-semibold mb-2">Roles</h3>
+        <p><b>Docente:</b> facilitador, modela buenas prácticas. <br/>
+           <b>Estudiante:</b> activo, resuelve problemas y valida en MySQL.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="instrucciones" class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-2xl font-bold">Instrucciones rápidas</h2>
+    <ol class="mt-4 list-decimal list-inside space-y-2">
+      <li>Abre <b>MySQL Workbench</b> o cliente CLI.</li>
+      <li>Ejecuta <b>sql/00_create_database.sql</b>.</li>
+      <li>Ejecuta <b>sql/01_schema.sql</b>.</li>
+      <li>Ejecuta <b>sql/02_seed.sql</b>.</li>
+      <li>Ejecuta <b>sql/03_queries.sql</b>.</li>
+    </ol>
+  </section>
+
+  <section id="galeria" class="max-w-7xl mx-auto px-6 py-8">
+    <h2 class="text-2xl font-bold">Imágenes de referencia 📸</h2>
+    <p class="text-gray-600">Gestión de proyectos informáticos.</p>
+    <div class="grid md:grid-cols-3 gap-4 mt-4">
+      <img class="rounded-xl shadow" loading="lazy" alt="Panel de gestión de proyectos en portátil"
+           src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=1200&auto=format&fit=crop"
+           onerror="this.onerror=null;this.src='https://picsum.photos/seed/pm1/1200/800';"/>
+      <img class="rounded-xl shadow" loading="lazy" alt="Equipo planificando proyectos"
+           src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop"
+           onerror="this.onerror=null;this.src='https://picsum.photos/seed/pm2/1200/800';"/>
+      <img class="rounded-xl shadow" loading="lazy" alt="Roadmap y notas de tareas"
+           src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
+           onerror="this.onerror=null;this.src='https://picsum.photos/seed/pm3/1200/800';"/>
+    </div>
+  </section>
+
+  <section id="diagramas" class="max-w-7xl mx-auto px-6 py-8">
+    <h2 class="text-2xl font-bold">Diagrama lógico 🗺️</h2>
+    <div class="bg-white border border-gray-200 rounded-2xl shadow p-5 mt-4">
+      <pre class="mermaid">erDiagram
+  DOCENTE ||--o{ PROYECTO : "dirige"
+  DOCENTE {
+    int docente_id PK
+    varchar numero_documento "UNIQUE"
+    varchar nombres
+    varchar titulo
+    int anios_experiencia
+    varchar direccion
+    varchar tipo_docente
+  }
+  PROYECTO {
+    int proyecto_id PK
+    varchar nombre
+    varchar descripcion
+    date fecha_inicial
+    date fecha_final "NULL"
+    decimal presupuesto
+    int horas
+    int docente_id_jefe FK
+  }
+</pre>
+    </div>
+  </section>
+
+  <section id="paquetes" class="max-w-7xl mx-auto px-6 py-8">
+    <h2 class="text-2xl font-bold mb-4">📦 Paquetes SQL</h2>
+    <p class="text-gray-700 mb-4">Revisa los archivos en la carpeta <code>sql/</code> del proyecto para ejecutarlos en orden.</p>
+  </section>
+
+  <section id="consultas" class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-2xl font-bold">🔍 Consultas SQL de verificación</h2>
+    <div class="mt-6 space-y-6">
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q0 – Crear y usar la base de datos</h3>
+        <pre><code class="language-sql">CREATE DATABASE IF NOT EXISTS proyectos_informaticos;
+USE proyectos_informaticos;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q1 – Proyectos y su docente jefe</h3>
+        <pre><code class="language-sql">SELECT p.proyecto_id, p.nombre AS proyecto, d.nombres AS docente_jefe
+FROM proyecto p
+JOIN docente d ON d.docente_id = p.docente_id_jefe;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q2 – Promedio de presupuesto por docente (UDF)</h3>
+        <pre><code class="language-sql">SELECT d.docente_id, d.nombres,
+       fn_promedio_presupuesto_por_docente(d.docente_id) AS promedio_presupuesto
+FROM docente d;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q3 – Verificar trigger UPDATE (auditoría)</h3>
+        <pre><code class="language-sql">SELECT *
+FROM copia_actualizados_docente
+ORDER BY auditoria_id DESC
+LIMIT 10;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q4 – Verificar trigger DELETE (auditoría)</h3>
+        <pre><code class="language-sql">SELECT *
+FROM copia_eliminados_docente
+ORDER BY auditoria_id DESC
+LIMIT 10;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q5 – Validar CHECKs</h3>
+        <pre><code class="language-sql">SELECT proyecto_id, nombre, fecha_inicial, fecha_final, presupuesto, horas
+FROM proyecto
+WHERE (fecha_final IS NULL OR fecha_final >= fecha_inicial)
+  AND presupuesto >= 0
+  AND horas >= 0;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q6 – Docentes con sus proyectos</h3>
+        <pre><code class="language-sql">SELECT d.docente_id, d.nombres, p.proyecto_id, p.nombre
+FROM docente d
+LEFT JOIN proyecto p ON d.docente_id = p.docente_id_jefe
+ORDER BY d.docente_id;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q7 – Total de horas por docente</h3>
+        <pre><code class="language-sql">SELECT d.docente_id, d.nombres, SUM(p.horas) AS total_horas
+FROM docente d
+LEFT JOIN proyecto p ON d.docente_id = p.docente_id_jefe
+GROUP BY d.docente_id, d.nombres;</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q8 – Inserciones vía procedimientos</h3>
+        <pre><code class="language-sql">-- Crear docentes
+CALL sp_docente_crear('CC1001', 'Ana Gómez', 'MSc. Ing. Sistemas', 6, 'Cra 10 # 5-55', 'Tiempo completo');
+CALL sp_docente_crear('CC1002', 'Carlos Ruiz', 'Ing. Informático', 3, 'Cll 20 # 4-10', 'Cátedra');
+
+-- IDs
+SET @id_ana    := (SELECT docente_id FROM docente WHERE numero_documento='CC1001');
+SET @id_carlos := (SELECT docente_id FROM docente WHERE numero_documento='CC1002');
+
+-- Proyectos
+CALL sp_proyecto_crear('Plataforma Académica', 'Módulos de matrícula', '2025-01-01', NULL, 25000000, 800, @id_ana);
+CALL sp_proyecto_crear('Chat Soporte TI', 'Chat universitario', '2025-02-01', '2025-06-30', 12000000, 450, @id_carlos);</code></pre>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold">Q9 – Inserciones directas (opcional)</h3>
+        <pre><code class="language-sql">INSERT INTO docente (numero_documento, nombres, titulo, anios_experiencia, direccion, tipo_docente)
+VALUES ('CC2001','María López','Esp. Gestión de Proyectos',7,'Av. Siempre Viva 742','Cátedra');
+
+INSERT INTO proyecto (nombre, descripcion, fecha_inicial, fecha_final, presupuesto, horas, docente_id_jefe)
+VALUES ('App Biblioteca','App móvil de préstamos','2025-03-01',NULL, 9000000, 320,
+        (SELECT docente_id FROM docente WHERE numero_documento='CC2001'));</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-10 pb-14 text-center text-sm text-gray-600">
+    IUDigital de Antioquia · Curso: Base de Datos · Docente: Julian Loaiza 👨‍🏫
+  </footer>
+</body>
+</html>
