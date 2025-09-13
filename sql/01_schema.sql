@@ -72,13 +72,17 @@ DROP PROCEDURE IF EXISTS sp_docente_actualizar;
 DROP PROCEDURE IF EXISTS sp_docente_eliminar;
 
 DELIMITER $$
+--Procedimiento: sp_docente_crear
+--Descripción: Inserta un nuevo docente en la tabla docente
+--Parametros de entrada: p_numero_documento,  p_nombres, p_titulo, p_anios_experiencia, p_direccion, p_tipo_docente)
+-- Retorna: El id del docente creado (docente_id_creado)
 CREATE PROCEDURE sp_docente_crear(
-  IN p_numero_documento VARCHAR(20),
-  IN p_nombres          VARCHAR(120),
-  IN p_titulo           VARCHAR(120),
-  IN p_anios_experiencia INT,
-  IN p_direccion        VARCHAR(180),
-  IN p_tipo_docente     VARCHAR(40)
+  IN p_numero_documento VARCHAR(20),-- número de documento del docente
+  IN p_nombres          VARCHAR(120),-- nombres completos del docente
+  IN p_titulo           VARCHAR(120),-- titulo academico del docente
+  IN p_anios_experiencia INT,-- años de experiencia del docente
+  IN p_direccion        VARCHAR(180),-- dirección de residencia
+  IN p_tipo_docente     VARCHAR(40)-- tipo docente ej tiempo completo, catedra...
 )
 BEGIN
   INSERT INTO docente (numero_documento, nombres, titulo, anios_experiencia, direccion, tipo_docente)
